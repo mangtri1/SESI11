@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>latihan 1 JSON</title>
+</head>
+<body>
+
+    nama: <span id="txNAMA"></span><br>
+    TGL_LAHIR: <span id="txTGLLAHIR"></span><br>
+    jkel: <span id="txJKEL"></span><br>
+    fim: <span id="txFILM"></span><br>
+    album: <span id="txALBUM"></span><br>
+    
+
+    <script>
+        const bacadta = new XMLHttpRequest();
+        bacadta.open("GET","http://localhost/mangtri/sesi11/latihan01.php")
+        bacadta.send();
+
+        bacadta.onload = function(){
+            const dta = JSON.parse(this.responseText);
+
+            console.log(dta);
+            let jkel = "perempuan";
+            if(dta.JKEL=="p"){
+                jkel = "perempuan"
+            }
+            document.getElementById("txNAMA").innerHTML=dta.NAMA
+            document.getElementById("txTGLLAHIR").innerHTML=dta.TGL_LAHIR
+            document.getElementById("txJKEL").innerHTML=jkel
+            document.getElementById("txFILM").innerHTML=dta.FILM
+            document.getElementById("txALBUM").innerHTML=dta.ALBUM
+            
+        }
+    </script>
+</body>
+</html>
